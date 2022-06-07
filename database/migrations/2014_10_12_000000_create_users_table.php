@@ -17,7 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('mobile_phone');
+            $table->string('mobile_phone');
+            $table->string('pin')->nullable();
+            $table->string('nrc');
+            $table->tinyInteger('levels')->default(1);
+            $table->boolean('is_frozen')->default(false);
+            $table->boolean('is_admin')->default(false);
+            $table->string('profile_img')->nullable();
+            $table->float('balance');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
