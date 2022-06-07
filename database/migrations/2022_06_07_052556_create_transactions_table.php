@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->float('amount');
-            $table->bigInteger('from');
-            $table->bigInteger('to');
+            $table->bigInteger('from'); //from user_id
+            $table->bigInteger('to'); //to user_id
             $table->timestamps();
         });
     }

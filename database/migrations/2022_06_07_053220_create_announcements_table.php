@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image')->nullable();
-            $table->bigInteger('created_by');
+            $table->bigInteger('created_by'); //created by admin
             $table->timestamps();
         });
     }

@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('specific_user_notifications', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id'); //to user_id
-            $table->string('title');
-            $table->text('description');
-            $table->string('image')->nullable();
-            $table->bigInteger('created_by'); //for admin
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('profile_img')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specific_user_notifications');
+        Schema::dropIfExists('admins');
     }
 };
