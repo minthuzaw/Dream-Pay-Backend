@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::prefix('admin')->namespace('Backend')->middleware(['auth'])->group(function(){
+    Route::get('/', [PageController::class, 'index']);
+});
 
 require __DIR__.'/auth.php';
