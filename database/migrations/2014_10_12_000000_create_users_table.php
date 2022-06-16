@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('mobile_phone')->unique();
-            $table->string('nrc');
+            $table->string('mobile_phone')->unique()->nullable();
+            $table->string('nrc')->unique()->nullable();
             $table->string('profile_img')->nullable();
             $table->tinyInteger('levels')->default(1);
-            $table->float('balance');
+            $table->float('balance')->default(0);
             $table->boolean('is_frozen')->default(false);
             $table->string('pin')->nullable();
             $table->timestamp('email_verified_at')->nullable();
