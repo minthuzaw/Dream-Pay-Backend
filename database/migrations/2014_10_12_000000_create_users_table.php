@@ -24,7 +24,7 @@ return new class extends Migration
             $table->tinyInteger('levels')->default(1);
             $table->float('balance')->default(0);
             $table->boolean('is_frozen')->default(false);
-            $table->string('pin')->nullable();
+            $table->string('pin')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

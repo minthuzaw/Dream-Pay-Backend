@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::prefix('admin')->namespace('Backend')->middleware(['auth'])->group(function(){
     Route::get('/', [PageController::class, 'index']);
+
 });
 
 require __DIR__.'/auth.php';
