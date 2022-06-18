@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('backend/img/apple-icon.png')}}"/>
-    <link rel="icon" type="image/png" href="{{asset('backend/img/favicon.png')}}"/>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+{{--    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('backend/logo/dream-pay-logo.png')}}"/>--}}
+    <link rel="icon" type="image/png" href="{{asset('backend/logo/dream-pay-logo.png')}}"/>
 
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
@@ -17,11 +20,23 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
     <link href="{{asset('backend/css/styles.css')}}" rel="stylesheet"/>
+
+    {{--style--}}
+{{--    <link rel="stylesheet" href="{{ asset('css/style.css') }}">--}}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {{--datatable--}}
+    {{--    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </head>
 
-<body class="m-0 font-sans antialiased font-normal text-size-base leading-default bg-gray-50 text-slate-500">
+<body class="m-0 font-sans antialiased font-normal text-size-base leading-default bg-gradient-fuchsia text-slate-500">
 <!-- sidenav  -->
-    <x-side-bar></x-side-bar>
+<x-side-bar></x-side-bar>
 <!-- end sidenav -->
 
 <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
@@ -41,103 +56,6 @@
 </main>
 
 
-<div fixed-plugin>
-    <a fixed-plugin-button
-       class="bottom-7.5 right-7.5 text-size-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-2 text-slate-700">
-        <i class="py-2 pointer-events-none fa fa-cog"> </i>
-    </a>
-    <!-- -right-90 in loc de 0-->
-    <div fixed-plugin-card
-         class="z-sticky shadow-soft-3xl w-90 ease-soft -right-90 fixed top-0 left-auto flex h-full min-w-0 flex-col break-words rounded-none border-0 bg-white bg-clip-border px-2.5 duration-200">
-        <div class="px-6 pt-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-            <div class="float-left">
-                <h5 class="mt-4 mb-0">Soft UI Configurator</h5>
-                <p>See our dashboard options.</p>
-            </div>
-            <div class="float-right mt-6">
-                <button fixed-plugin-close-button
-                        class="inline-block p-0 mb-4 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer hover:scale-102 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-150 bg-x-25 active:opacity-85 text-slate-700">
-                    <i class="fa fa-close"></i>
-                </button>
-            </div>
-            <!-- End Toggle Button -->
-        </div>
-        <hr class="h-px mx-0 my-1 bg-transparent bg-gradient-horizontal-dark"/>
-        <div class="flex-auto p-6 pt-0 sm:pt-4">
-            <!-- Sidebar Backgrounds -->
-            <div>
-                <h6 class="mb-0">Sidebar Colors</h6>
-            </div>
-            <a href="javascript:void(0)">
-                <div class="my-2 text-left" sidenav-colors>
-                    <span
-                        class="py-2.2-em text-size-xs px-3.6-em rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-fuchsia relative inline-block cursor-pointer whitespace-nowrap border border-solid border-slate-700 text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                        active-color data-color="fuchsia" onclick="sidebarColor(this)"></span>
-                    <span
-                        class="py-2.2-em text-size-xs px-3.6-em rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-dark-gray relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                        data-color="dark-gray" onclick="sidebarColor(this)"></span>
-                    <span
-                        class="py-2.2-em text-size-xs px-3.6-em rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-cyan relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                        data-color="cyan" onclick="sidebarColor(this)"></span>
-                    <span
-                        class="py-2.2-em text-size-xs px-3.6-em rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-lime relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                        data-color="lime" onclick="sidebarColor(this)"></span>
-                    <span
-                        class="py-2.2-em text-size-xs px-3.6-em rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-orange relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                        data-color="orange" onclick="sidebarColor(this)"></span>
-                    <span
-                        class="py-2.2-em text-size-xs px-3.6-em rounded-circle h-5.75 mr-1.25 w-5.75 ease-soft-in-out bg-gradient-red relative inline-block cursor-pointer whitespace-nowrap border border-solid border-white text-center align-baseline font-bold uppercase leading-none text-white transition-all duration-200 hover:border-slate-700"
-                        data-color="red" onclick="sidebarColor(this)"></span>
-                </div>
-            </a>
-            <!-- Sidenav Type -->
-            <div class="mt-4">
-                <h6 class="mb-0">Sidenav Type</h6>
-                <p class="leading-normal text-size-sm">Choose between 2 different sidenav types.</p>
-            </div>
-            <div class="flex">
-                <button transparent-style-btn
-                        class="inline-block w-full px-4 py-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all border border-transparent border-solid rounded-lg cursor-pointer xl-max:cursor-not-allowed xl-max:opacity-65 xl-max:pointer-events-none xl-max:bg-gradient-fuchsia xl-max:text-white xl-max:border-0 hover:scale-102 hover:shadow-soft-xs active:opacity-85 leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-fuchsia bg-fuchsia-500 hover:border-fuchsia-500"
-                        data-class="bg-transparent" active-style>Transparent
-                </button>
-                <button white-style-btn
-                        class="inline-block w-full px-4 py-3 mb-2 ml-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg cursor-pointer xl-max:cursor-not-allowed xl-max:opacity-65 xl-max:pointer-events-none xl-max:bg-gradient-fuchsia xl-max:text-white xl-max:border-0 hover:scale-102 hover:shadow-soft-xs active:opacity-85 leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 border-fuchsia-500 bg-none text-fuchsia-500 hover:border-fuchsia-500"
-                        data-class="bg-white">White
-                </button>
-            </div>
-            <p class="block mt-2 leading-normal text-size-sm xl:hidden">You can change the sidenav type just on desktop
-                view.</p>
-            <!-- Navbar Fixed -->
-            <div class="mt-4">
-                <h6 class="mb-0">Navbar Fixed</h6>
-            </div>
-            <div class="min-h-6 mb-0.5 block pl-0">
-                <input navbarFixed
-                       class="rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5-em relative float-left mt-1 ml-auto w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right"
-                       type="checkbox"/>
-            </div>
-            <hr class="h-px bg-transparent bg-gradient-horizontal-dark sm:my-6"/>
-            <a class="inline-block w-full px-6 py-3 mb-4 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer leading-pro text-size-xs ease-soft-in hover:shadow-soft-xs hover:scale-102 active:opacity-85 tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray"
-               href="https://www.creative-tim.com/product/soft-ui-dashboard-tailwind" target="_blank">Free Download</a>
-            <a class="inline-block w-full px-6 py-3 mb-4 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer active:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-150 bg-x-25 border-slate-700 text-slate-700 hover:bg-transparent hover:text-slate-700 hover:shadow-none active:bg-slate-700 active:text-white active:hover:bg-transparent active:hover:text-slate-700 active:hover:shadow-none"
-               href="https://www.creative-tim.com/learning-lab/tailwind/quick-start/soft-ui-dashboard" target="_blank">View
-                documentation</a>
-            <div class="w-full text-center">
-                <a class="github-button" href="https://github.com/creativetimofficial/soft-ui-dashboard-tailwind"
-                   data-icon="octicon-star" data-size="large" data-show-count="true"
-                   aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub">Star</a>
-                <h6 class="mt-4">Thank you for sharing!</h6>
-                <a href="https://twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20Tailwind%20made%20by%20%40CreativeTim&hashtags=webdesign,dashboard,tailwindcss&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-tailwind"
-                   class="inline-block px-6 py-3 mb-0 mr-2 font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 me-2 border-slate-700 bg-slate-700"
-                   target="_blank"> <i class="mr-1 fab fa-twitter"></i> Tweet </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-tailwind"
-                   class="inline-block px-6 py-3 mb-0 mr-2 font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 me-2 border-slate-700 bg-slate-700"
-                   target="_blank"> <i class="mr-1 fab fa-facebook-square"></i> Share </a>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
 
 <!-- plugin for charts  -->
 <script src="{{asset('backend/js/plugins/chartjs.min.js')}}" async></script>
@@ -147,4 +65,45 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- main script file  -->
 <script src="{{asset('backend/js/soft-ui-dashboard-tailwind.js')}}" async></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+{{--datatable--}}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+{{--sweetalert1--}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+    $(function ($) {
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+        if (token) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': token.content
+                }
+            });
+        } else {
+            console.log('error');
+        }
+
+            @if(session('created')){
+            swal("Successfully created!", "You clicked the button!", "success");
+        }
+            @endif
+
+            @if(session('updated')){
+            swal("Successfully updated!", "You clicked the button!", "success");
+        }
+        @endif
+    });
+</script>
+
+@yield('script')
+</body>
+
+
 </html>
