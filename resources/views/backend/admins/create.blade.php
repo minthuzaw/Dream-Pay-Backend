@@ -6,7 +6,13 @@
     @endsection
 
     <div class="container">
-        <div class="card">
+        <div class="mb-2 flex justify-end">
+            <a href="{{ route('admins-management.index') }}" class="btn bg-gradient-gray">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                Back
+            </a>
+        </div>
+        <div class="card bg-gradient-gray">
             <div class="card-body">
                 <form action="{{ route('admins-management.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                     @csrf
@@ -54,7 +60,7 @@
                     </div>
 
                     <div class="flex justify-end">
-                        <button type="submit" class="btn btn-info">Save</button>
+                        <button type="submit" class="btn bg-gradient-gray">Save</button>
                     </div>
                 </form>
             </div>

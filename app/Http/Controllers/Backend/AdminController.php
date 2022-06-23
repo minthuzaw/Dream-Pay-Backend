@@ -28,9 +28,9 @@ class AdminController extends Controller
                 })
 
                 ->addColumn('action', function ($admin) {
-                    $editIcon = '<a href="' . route('admins-management.edit', $admin->id) . '" class="text-slate-700 p-2" style="font-size: 20px"><i class="far fa-edit"></i></a>';
+                    $editIcon = '<a href="' . route('admins-management.edit', $admin->id) . '" class="text-warning p-2" style="font-size: 20px"><i class="far fa-edit"></i></a>';
 
-                    $deleteIcon = '<a href="#" class="text-red-500 delete-btn" id="delete" data-id="' . $admin->id . '" style="font-size: 20px"><i class="fas fa-trash-alt"></i></a>';
+                    $deleteIcon = '<a href="#" class="text-danger delete-btn" id="delete" data-id="' . $admin->id . '" style="font-size: 20px"><i class="fas fa-trash-alt"></i></a>';
 
                     return '<div class="action-icon">' . $editIcon . $deleteIcon . '</div>';
                 })

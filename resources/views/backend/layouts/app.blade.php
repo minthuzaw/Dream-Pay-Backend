@@ -6,7 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-{{--    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('backend/logo/dream-pay-logo.png')}}"/>--}}
+    {{--    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('backend/logo/dream-pay-logo.png')}}"/>--}}
     <link rel="icon" type="image/png" href="{{asset('backend/logo/dream-pay-logo.png')}}"/>
 
     <!--     Fonts and icons     -->
@@ -22,7 +22,7 @@
     <link href="{{asset('backend/css/styles.css')}}" rel="stylesheet"/>
 
     {{--style--}}
-{{--    <link rel="stylesheet" href="{{ asset('css/style.css') }}">--}}
+    {{--    <link rel="stylesheet" href="{{ asset('css/style.css') }}">--}}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -34,7 +34,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </head>
 
-<body class="m-0 font-sans antialiased font-normal text-size-base leading-default bg-gradient-fuchsia text-slate-500">
+<body class="m-0 font-sans antialiased font-normal text-size-base leading-default bg-white text-slate-500">
 <!-- sidenav  -->
 <x-side-bar></x-side-bar>
 <!-- end sidenav -->
@@ -54,7 +54,6 @@
         </div>
     </div>
 </main>
-
 
 
 <!-- plugin for charts  -->
@@ -99,6 +98,32 @@
             swal("Successfully updated!", "You clicked the button!", "success");
         }
         @endif
+        //datatable defaults
+        $.extend(true, $.fn.dataTable.defaults, {
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            columnDefs: [
+                {
+                    "targets": "hidden",
+                    "visible": false,
+                },
+                {
+                    "targets": "no-order",
+                    "orderable": false,
+                },
+                {
+                    "targets": "no-search",
+                    "searchable": false,
+                }
+            ],
+            language: {
+                "paginate": {
+                    "next": "<i class='fa-solid fa-angle-right'></i>",
+                    "previous": "<i class='fa-solid fa-angle-left'></i>"
+                },
+            },
+        });
     });
 </script>
 

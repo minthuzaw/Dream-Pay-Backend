@@ -31,7 +31,6 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
         return redirect()->intended(RouteServiceProvider::ADMINPANEL);
     }
 
@@ -49,6 +48,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/dashboards');
+        return redirect('/');
     }
 }

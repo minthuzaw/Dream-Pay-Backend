@@ -41,10 +41,20 @@ html {
 1. Remove the margin in all browsers.
 2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
 */
+
 /*datatable*/
 .page-item.active .page-link {
-    background-image: linear-gradient(310deg, #29d8c5, #367e9f) !important;
-    border-color: #a4cad0 !important;
+    /*background-image: linear-gradient(310deg, #29d8c5, #367e9f) !important;*/
+    /*border-color: #a4cad0 !important;*/
+}
+select.form-select.form-select-sm {
+    /*background-color: #e4f7f7 !important;*/
+}
+input.form-control.form-control-sm {
+    /*background-color: #c9e7e7 !important;*/
+}
+label{
+    color: black;
 }
 
 img.profile-img {
@@ -2507,6 +2517,11 @@ h6 {
 .text-blue-800 {
     --tw-text-opacity: 1;
     color: rgb(52 78 134 / var(--tw-text-opacity));
+}
+
+.text-yellow-800{
+    --tw-text-opacity: 1;
+    color: rgb(255 255 0 / var(--tw-text-opacity));
 }
 
 .text-sky-600 {
