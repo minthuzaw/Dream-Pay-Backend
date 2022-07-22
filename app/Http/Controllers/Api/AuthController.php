@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-class AuthApiController extends Controller
+class AuthController extends Controller
 {
     public function register(RegisterApiRequest $request)
     {
@@ -32,6 +32,7 @@ class AuthApiController extends Controller
 
     public function login(Request $request)
     {
+        logger($request);
         $attributes = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -40,23 +41,44 @@ class AuthApiController extends Controller
 
         $user = User::where('email', $attributes['email'])->first();
 
+
         if ($user) {
             if (Hash::check($attributes['password'], $user->password)) {
                 return $user->createToken('test')->accessToken;
             }
-            return 'wrong';
+            return $user;
         } else {
-            return 'wrong';
+            return response()->json(['message' => 'no user found'], 401);
         }
     }
 
     public function profile(Request $request)
     {
-        return $request->user();
+        $user = $request->user()->makeVisible('pin')->toArray();
+        $user['current_step'] = $user['pin'] ? 1 : 0;
+        unset($user['pin']);
+        return $user;
+
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         $request->user()->token()->revoke();
         return 'logout';
+    }
+
+    public function updatePin(Request $request)
+    {
+//        return $request->all();
+        $attributes = $request->validate([
+            'pin' => 'required|min:6|max:6|unique:users,pin'
+        ]);
+        $attributes['pin'] = bcrypt($request->pin);
+
+        $user = User::where('id', auth()->id())->update($attributes);
+        return response()->json([
+            'status' => 'success',
+            'data' => $user
+        ]);
     }
 }
