@@ -35,7 +35,7 @@
 </head>
 
 <body class="m-0 font-sans antialiased font-normal text-size-base leading-default bg-white text-slate-500">
-<!-- sidenav  -->
+<!-- sidenav-->
 <x-side-bar></x-side-bar>
 <!-- end sidenav -->
 

@@ -1,5 +1,9 @@
 <aside
-    class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
+    class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap
+    items-center justify-between overflow-y-auto rounded-2xl border-0 p-0
+    antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent"
+    style="background-color: #f3f2f2"
+>
     <div class="h-19.5">
         <p class="block px-8 py-6 m-0 text-size-sm whitespace-nowrap text-slate-700 bg-gradient-gray">
             <img src="{{asset('backend/logo/dream-pay-logo.png')}}"
@@ -12,7 +16,7 @@
 
     <hr class="h-px mt-0 bg-transparent bg-gradient-horizontal-dark"/>
 
-    <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full" >
+    <div class="side-bar items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full" >
         <ul class="flex flex-col pl-0 mb-0">
             <li class="mt-0.5 w-full">
                 <a class="py-2.7 shadow-soft-xl text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors"
